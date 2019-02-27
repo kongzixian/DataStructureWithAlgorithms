@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <!-- 栈 -->
+    <script type="text/javascript" src="./js/stack.js"></script>
+    <!-- 队列 -->
+    <script type="text/javascript" src="./js/queue.js"></script>
+    <!-- 链表 -->
+    <script type="text/javascript" src="./js/likedList.js"></script>
+    <!-- 集合 -->
+    <script type="text/javascript" src="./js/setKong.js"></script>
+    <script type="text/javascript">
+    /*******************      其他开始   *********************/
+      var treeArr = [
+        {
+          id:1,
+          children: [
+            {
+              id: 101,
+              children: [
+                {
+                  id: 1011,
+                  children: []
+                },
+                {
+                  id: 1012,
+                  children: []
+                },
+                {
+                  id: 1013,
+                  children: []
+                },
+                {
+                  id: 1014,
+                  children: []
+                }
+              ]
+            },
+            {
+              id: 102,
+              children: [
+                {
+                  id: 1021,
+                  children: []
+                },
+                {
+                  id: 1022,
+                  children: []
+                },
+                {
+                  id: 1023,
+                  children: []
+                },
+                {
+                  id: 1024,
+                  children: []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id:2,
+          children: [
+            {
+              id: 201,
+              children: [
+                {
+                  id: 2011,
+                  children: []
+                },
+                {
+                  id: 2012,
+                  children: []
+                },
+                {
+                  id: 2013,
+                  children: []
+                },
+                {
+                  id: 2014,
+                  children: []
+                }
+              ]
+            },
+            {
+              id: 202,
+              children: [
+                {
+                  id: 2021,
+                  children: []
+                },
+                {
+                  id: 2022,
+                  children: []
+                },
+                {
+                  id: 2023,
+                  children: []
+                },
+                {
+                  id: 2024,
+                  children: []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+
+      function handelTreeData(arr){
+        var newArr = [];
+        for( var i = 0; i < arr.length; i++ ){
+          newArr.push(...handelTreeDataDetill(arr[i]))
+        }
+        return newArr
+      }
+
+      function handelTreeDataDetill(obj, otherArr){
+        otherArr = otherArr || []
+        otherArr.push(obj.id)
+        if( obj.children && obj.children.length > 0 ){
+          for( var i = 0; i < obj.children.length; i++ ){
+            handelTreeDataDetill(obj.children[i], otherArr)
+          }
+        }
+        return otherArr
+      }
+    /*******************      其他结束   *********************/
+
+
+    /*******************      stack开始   *********************/
+        // 十进制转二进制
+        function decimalBy2(num){
+          // 栈实例
+          var stack = new Stack();
+          var binaryStr = ''
+          while(num > 0){
+            // remainder 余数
+            stack.push( num % 2 )
+            num = Math.floor( num/2 )
+
+          }
+          while(!stack.isEmpty()){
+            binaryStr += stack.pop()
+          }
+          return binaryStr
+        }
+
+        // 十进制转二进制 (没用栈)
+        function decimalBy2NoStack(num){
+          var tempArr = []
+          while(num > 0){
+            // remainder 余数
+            tempArr.push( num % 2 )
+            num = Math.floor( num/2 )
+          }
+          return tempArr.reverse().join('')
+        }
+    /*******************      stack结束  *********************/
+
+
+    /*******************      queue开始   *********************/ 
+      // 浪花传鼓
+      function spindriftTransmit(names, num){
+        var num = num || 3
+        var queue = new Queue();
+        for(var i = 0 ; i < names.length ; i++){
+          // 入队
+          queue.enqueue(names[i])
+        }
+        while( queue.size() > 1 ){
+          for( var i = 0; i < num - 1; i++ ){
+            queue.enqueue(queue.dequeue())
+          }
+          queue.dequeue()
+        }
+        return queue.front()
+      }
+      // console.log(spindriftTransmit(['a', 'b', 'c', 'd', 'e']))
+      // console.log(spindriftTransmit(['a', 'b', 'c', ]))
+    /*******************      queue结束   *********************/
+
+
+    /*******************      链表开始   *********************/ 
+      //链表和字符串？？？
+      var likedList = new LikedList({
+        indexOfFunjudgeby: function(item1, item2 ){
+          return item1.name === item2.name
+        }
+      })
+
+      likedList.append({
+        name: 1
+      })
+
+      likedList.append({
+        name: 2
+      })
+
+      likedList.append({
+        name: 3
+      })
+
+      likedList.append({
+        name: 4
+      })
+
+      likedList.append({
+        name: 5
+      })
+
+      likedList.insert(1,{
+        name: 10
+      })
+
+      // console.log( likedList.indexOf({
+      //   name: 5
+      // }) )
+
+      // likedList.remove({
+      //   name: 10
+      // })
+      // console.log( likedList.getHead() )
+      
+      // var likedList_2 = new LikedList
+      // likedList_2.append(1)
+      // likedList_2.append(2)
+      // likedList_2.append(3)
+
+      // likedList_2.insert(1,10)
+      // console.log( likedList_2.indexOf( 1 ) )
+      // console.log( likedList_2.getHead() )
+      
+    /*******************      链表结束   *********************/ 
+
+
+    /*******************      集合开始   *********************/ 
+      var setKong_a = new SetKong()
+      setKong_a.add(1)
+      setKong_a.add(2)
+      setKong_a.add(3)
+
+      var setKong_b = new SetKong()
+      setKong_b.add(2)
+      setKong_b.add(3)
+      setKong_b.add(4)
+
+      // console.log( setKong_a.union(setKong_b).values() )
+      // console.log( setKong_a.intersection(setKong_b).values() )
+      // console.log( setKong_a.difference(setKong_b).values() )
+    /*******************      集合结束   *********************/ 
+
+    
+
+
+
+
+
+
+    </script>
+</body>
+</html>
