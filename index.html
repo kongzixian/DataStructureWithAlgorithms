@@ -13,8 +13,65 @@
     <script type="text/javascript" src="./js/likedList.js"></script>
     <!-- 集合 -->
     <script type="text/javascript" src="./js/setKong.js"></script>
+
+    <!-- 树 -->
+    <script type="text/javascript" src="./js/tree.js"></script>
     <script type="text/javascript">
     /*******************      其他开始   *********************/
+      // ;function Kong(option){
+      //   var option = option || {}
+      //   var length = 0
+      //   var obj = {
+
+      //   }
+      //   this.length = 0
+      //   console.log(1111111111111111111111)
+      //   console.log(length)
+
+      //   // this.add = function(){
+      //   //   length++
+      //   //   console.log(length)
+      //   // }
+      //   // getLength = function(){
+      //   //   return length
+      //   // }
+
+
+      // }
+      // Kong.prototype = {
+      //   add: function(){
+      //     obj = {
+      //       name: 999
+      //     }
+      //     this.length++
+      //     console.log(this.length)
+      //   },
+      //   getLength: function(){
+      //     console.log(obj)
+      //     var len = this.length
+      //     return len
+      //   }
+      // }
+
+      // var kong = new Kong()
+      // kong.add()
+      // kong.add()
+      // kong.add()
+      // kong.add()
+      // console.log( kong.getLength() )
+      // var kong2 = new Kong()
+      // // kong2.add()
+      // // kong2.add()
+      // // kong2.add()
+      // // kong2.add()
+      // console.log( kong2.getLength() )
+
+
+
+
+
+
+
       var treeArr = [
         {
           id:1,
@@ -235,25 +292,38 @@
       // likedList_2.insert(1,10)
       // console.log( likedList_2.indexOf( 1 ) )
       // console.log( likedList_2.getHead() )
-      
     /*******************      链表结束   *********************/ 
 
 
     /*******************      集合开始   *********************/ 
       var setKong_a = new SetKong()
-      setKong_a.add(1)
-      setKong_a.add(2)
-      setKong_a.add(3)
+      // setKong_a.add(1)
+      // setKong_a.add(2)
+      // setKong_a.add(3)
 
       var setKong_b = new SetKong()
-      setKong_b.add(2)
-      setKong_b.add(3)
-      setKong_b.add(4)
+      // setKong_b.add(2)
+      // setKong_b.add(3)
+      // setKong_b.add(4)
 
       // console.log( setKong_a.union(setKong_b).values() )
       // console.log( setKong_a.intersection(setKong_b).values() )
       // console.log( setKong_a.difference(setKong_b).values() )
     /*******************      集合结束   *********************/ 
+
+
+    /*******************      tree开始   *********************/
+      var tree = new Tree
+          tree.insert(11)
+          tree.insert(8)
+          tree.insert(4)
+          tree.insert(9)
+          tree.insert(3)
+          tree.insert(5)
+          tree.insert(10)
+
+          console.log(tree.getRoot())
+    /*******************      tree结束   *********************/
 
     
 

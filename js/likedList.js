@@ -1,3 +1,17 @@
+/*
+* LikedList v0.01
+* Copyright (c) 2018 kong
+* 暴露的方法
+*  append 链表尾添加元素
+*  insert 链表某一个位置添加元素
+*  removeAt 根据索引删除项
+*  indexOf 获取索引
+*  remove 删除项
+*  isEmpty 检查链表是否为空
+*  size 获取链表的长度
+*  getHead 获取链头
+*/
+
 // ;(function(window){
   // 链表构造器
   ;function LikedList(option){
@@ -144,16 +158,17 @@
       return this.removeAt(this.indexOf(element))
     }
     
-    // 检查栈 是否为空
+    // 检查链表 是否为空
     this.isEmpty = function(){
       return items.length == 0
     }  
 
-    // 获取队列的大小
+    // 获取链表 的大小
     this.size = function(){
       return items.length
     }
-
+    
+    // 获取链头
     this.getHead = function(){
         return head
     }

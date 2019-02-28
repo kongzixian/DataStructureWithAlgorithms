@@ -1,5 +1,20 @@
+/*
+* SetKong v0.01
+* Copyright (c) 2018 kong
+* 暴露的方法
+*  has 查元素是否存在
+*  add 添加
+*  remove 移除
+*  clear 清空集合 
+*  size 集合的大小
+*  values 获取数组
+*  union 并集
+*  intersection 交集
+*  difference 差集
+*/
+
 // ;(function(window){
-  // 栈构造器
+  // 集合构造器
   ;function SetKong(){
     var items = {}
 
@@ -17,6 +32,7 @@
       }
     }
 
+    // 移除
     this.remove = function(value){
       if( this.has(value) ){
         delete  items[value]
