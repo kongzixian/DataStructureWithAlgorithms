@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>export excel</title>
+</head>
+<body>
+  <button id="btn_export">导出</button>
+  <button id="btn_print">打印</button>
+  <script type="text/javascript">
+
+  /***************************** 导出开始 ******************************/
+    var exportData = [
+      {
+        name: 'kong034322222222222222222222222222222222222222222222222222222222',
+        sex: '男',
+        age: 18
+      },
+      {
+        name: 'kong1',
+        sex: '男',
+        age: 19
+      },
+      {
+        name: 'kong2',
+        sex: '男',
+        age: 20
+      },
+      {
+        name: 'kong3',
+        sex: '男',
+        age: 21
+      },
+      {
+        name: 'kong4',
+        sex: '男',
+        age: 22
+      }
+    ];
+
+    var col = [
+                {
+                    title: '姓名'
+                },
+                {
+                    title: '性别'
+                },
+                {
+                    title: '年龄'
+                },
+              ]
+    
+    function export_excel( data, col ){
+      var alink = document.createElement('a')
+      var textType = 'text/csv'
+      alink.href = 'data:'+ textType +';charset=utf-8,\ufeff' + encodeURIComponent(function(){
+            var dataMain = []
+            var dataTitle = []
+            data.forEach(function( item, index ){
+              var tempArr = []
+              for( let prop in item ){
+                tempArr.push( item[prop] )
+              }
+              dataMain.push(tempArr.join(','))
+            })
+
+            col.forEach(function( item, index ){
+              dataTitle.push( item['title'] )
+            })
+            dataMain.push('汇总' + data.length)
+            console.log(dataTitle.join(',') + '\r\n' + dataMain.join('\r\n'))
+            return dataTitle.join(',') + '\r\n' + dataMain.join('\r\n')
+
+          }()
+      )
+      alink.download = 'hjhjj.csv'
+      document.body.appendChild(alink)
+      alink.click();
+
+      document.body.removeChild(alink)
+
+
+    }
+    btn_export.onclick = function(){
+      export_excel(exportData, col)
+    }
+
+  /***************************** 导出结束 ******************************/
+
+
+
+  /***************************** 打印结束 ******************************/
+     function print_html(){
+        var printWin = window.open('', '_blank')
+
+        var html = `dasdasdkasl;dasdasdsadasd`
+        console.log(printWin)
+        printWin.document.write(html);
+        printWin.document.close();
+        printWin.print();
+        printWin.close();
+
+
+    }
+    btn_print.onclick = function(){
+      print_html()
+    }
+  /***************************** 打印结束 ******************************/
+
+  </script>
+</body>
+</html>
